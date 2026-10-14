@@ -73,3 +73,9 @@ The project was developed in Google Colab.
 Disclaimer
 
 This project is an educational prototype and does not replace professional IT support or approved organizational troubleshooting procedures.
+
+Training Program
+
+This project was developed as part of the Natural Language Processing (Applied) training program at SDAIA Academy.
+
+SDAIA Academy GitHub: https://github.com/SDAIAAcademy
