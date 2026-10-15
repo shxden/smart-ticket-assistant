@@ -27,7 +27,7 @@ Dataset
 
 The project uses the albaz2000/arabic-itsm-dataset dataset from Hugging Face.
 
-The dataset was cleaned to remove conflicting labels and duplicate records.
+The dataset was cleaned to remove duplicate records and conflicting labels.
 
 The final cleaned dataset contains 9,506 records across six categories:
 
@@ -41,24 +41,44 @@ The final cleaned dataset contains 9,506 records across six categories:
 Methodology
 
 1. Load and clean the dataset.
-2. Convert ticket text into TF-IDF features.
-3. Train a Logistic Regression classifier.
-4. Generate multilingual sentence embeddings for semantic search.
-5. Combine semantic and character-level similarity scores.
-6. Retrieve the closest matching issue and its suggested solution.
-7. Display the results through a Gradio interface.
+2. Split the data into training and test sets.
+3. Convert ticket text into TF-IDF features.
+4. Train a Logistic Regression classifier.
+5. Evaluate classification performance using Accuracy, Precision, Recall, F1-score, and a Confusion Matrix.
+6. Generate multilingual sentence embeddings for semantic search.
+7. Combine semantic and character-level TF-IDF similarity scores.
+8. Evaluate retrieval performance using Top-1 Accuracy, Top-3 Accuracy, and Mean Reciprocal Rank (MRR).
+9. Display the results through a Gradio interface.
 
 Evaluation
 
-The ticket classification model achieved 88.38% accuracy on the held-out test set.
+Ticket Classification
 
-The retrieval system was tested using six manually prepared test cases. This preliminary test is limited and does not establish general retrieval accuracy on unseen real-world tickets.
+The Logistic Regression classifier achieved 88.38% accuracy on the held-out test set of 1,902 records.
+
+Metric	Score
+Accuracy	88.38%
+Macro Precision	88.02%
+Macro Recall	88.26%
+Macro F1-score	87.97%
+Weighted Precision	89.07%
+Weighted Recall	88.38%
+Weighted F1-score	88.56%
+
+The classification report and Confusion Matrix are available in the project notebook.
+
+Information Retrieval
+
+The hybrid search system was evaluated using manually prepared test cases. The notebook reports Top-1 Accuracy, Top-3 Accuracy, and Mean Reciprocal Rank (MRR).
+
+The initial evaluation used six test cases. This is a preliminary evaluation and is not sufficient to establish general retrieval performance on unseen real-world tickets.
 
 Limitations
 
 * The dataset contains synthetic Egyptian Arabic IT support text, which may not fully represent real-world Saudi Arabic tickets.
 * The knowledge base covers a limited number of predefined issues.
 * The similarity threshold is experimental and may reject valid matches or produce incorrect matches.
+* Retrieval evaluation uses a small manually prepared test set and should be expanded.
 * The suggested solutions should be reviewed before use in a real IT support environment.
 
 How to Run
